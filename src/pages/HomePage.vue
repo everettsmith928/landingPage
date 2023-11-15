@@ -314,7 +314,7 @@ textarea {
 }
 
 .contact-area {
-  height: 100dvh;
+  min-height: 100dvh;
   background-image: url("../assets/img/contact-waves.svg");
   background-size: cover;
   background-position: center;
