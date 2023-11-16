@@ -19,33 +19,42 @@
         </h2>
       </div>
       <div class="col-12 splash-asset d-flex align-items-center justify-content-center">
-        <a href="https://github.com/everettsmith928">
-          <h3 class="splash-heading-text icon"><i class="icon mdi mdi-github"></i></h3>
+        <a href="https://github.com/everettsmith928" title="github link">
+          <h3 class="icon"><i class="icon mdi mdi-github"></i></h3>
         </a>
-        <a href="https://www.linkedin.com/in/everett-smith-811b57132/">
-          <h3 class="splash-heading-text icon"><i class="icon mdi mdi-linkedin"></i></h3>
+        <a href="https://www.linkedin.com/in/everett-smith-811b57132/" title="indeed link">
+          <h3 class="icon"><i class="icon mdi mdi-linkedin"></i></h3>
         </a>
-        <h3 class="splash-heading-text icon"><i class="icon mdi mdi-note"></i></h3>
+        <h3 class="icon"><i class="icon mdi mdi-note"></i></h3>
       </div>
     </section>
     <section class="row about-area justify-content-center">
       <div class="col-12 text-center">
         <h3 class="banner-text">About</h3>
       </div>
-      <div class="col-5 d-flex justify-content-center">
-        Picture
-        And About area
+      <div class="col-md-5 col-12 d-flex justify-content-center about-portrait">
+        <img src="../assets/img/headshot1.jpg" alt="portrait" class="img-fluid portrait elevation-4">
       </div>
-      <div class="col-5 d-flex justify-content-center">
-        Picture
-        And About area
+      <div class="col-md-5 col-12 d-flex flex-column justify-content-center about-description">
+        <p>Coming from a decade long fine art background, and now moving into the Full Stack Development world. I began my
+          coding
+          journey at the beginning of 2023. I have hundreds of hours towards learning to code, developing
+          projects, and solving complex problems.</p>
+        <p>I attended Codeworks Full Stack Immersion Bootcamp course from August of this year to November. At CodeWorks we
+          learned Agile software development strategies as well as working with others. Beyond that we learned plenty of
+          languages and devoted many hours to building multiple reactive applications. I
+          excelled in JavaScript and front-end development. My learning time spent at CodeWorks was robust and I really
+          enjoy anything technical. I now have
+          a strong foundation for building out personal projects and working on new exciting applications. My learning
+          journey has just begun</p>
+        <p>🧘 You can find me doing yoga, reading a book, or at the gym in my free time.</p>
       </div>
     </section>
     <section class="row banner-row elevation-5 justify-content-center">
       <div class="col-12 d-flex justify-content-center skill-title">
         <h2 class="banner-text"><b>Skills</b></h2>
       </div>
-      <div class="banner col-3 d-flex flex-column elevation-4">
+      <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
         <div class="text-center">
           <h2 class="skill-subtitle">Front End</h2>
         </div>
@@ -55,7 +64,7 @@
         <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>HTML</h3>
         <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>CSS</h3>
       </div>
-      <div class="banner col-3 d-flex flex-column elevation-4">
+      <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
         <div class="text-center">
           <h2 class="skill-subtitle">Back End</h2>
         </div>
@@ -68,7 +77,7 @@
         <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>Express</h3>
         <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>XRPL</h3>
       </div>
-      <div class="banner col-3 d-flex flex-column elevation-4">
+      <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
         <div class="text-center">
           <h2 class="skill-subtitle">Design</h2>
         </div>
@@ -92,19 +101,20 @@
         <p class="project-text">Stackify is a Spotify Premium user extension that allows DJs and event planners to
           creatively organize event
           playlists, speeches, and write important notes while hosting an event. Built by a team of 4 developers at
-          CodeWorks we see Stackify as the capstone of our development journey at bootcamp. Utilizing the Spotify API,
-          agile development methods, and creative technical solutions. Allowing us to access rich information about songs,
+          CodeWorks we see Stackify as the capstone of our development journey at bootcamp.<br><br> Utilizing the Spotify
+          API,
+          agile development methods, and creative technical solutions Stackify allows users to access rich information
+          about songs,
           and come up with creative ways for the user to manage and edit
-          playlists, and create a robust full-stack application within 2 weeks.</p>
-        <h2 class="project-title">Node JS Vue Mongo DB Spotify API Bootstrap</h2>
-        <h2 class="project-title"></h2>
+          playlists. This entire robust full-stack application was created within 2 weeks.</p>
+        <h2 class="project-tools">Node JS ◾ Vue ◾ Mongo DB ◾ Spotify API ◾ Bootstrap</h2>
       </div>
       <div class="col-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
         <h2 class="project-title">Keepr</h2>
-        <p class="project-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda sapiente officiis enim
-          voluptatem minus
-          ipsum non autem, vero nulla adipisci saepe. Corrupti nemo quos atque doloremque deleniti, distinctio optio
-          exercitationem.</p>
+        <p class="project-text">Keepr is a mock social media image sharing web application. Keepr has a C# backend, and
+          Vue frontend. Utilizing a My SQL database, allowing users to store image links and have private vaults where
+          they can store user information and images. Images have a view count, and are able to be favorited.</p>
+        <h2 class="project-tools">C# ◾ JavaScript ◾ Vue ◾ My SQL ◾ .NET ◾ Bootstrap</h2>
       </div>
       <div class="col-5 d-flex justify-content-center align-items-center screenshot">
         <img src="../assets/img/blob-scene-haikei.svg" class="img-fluid project-image elevation-3">
@@ -114,25 +124,26 @@
       </div>
       <div class="col-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
         <h2 class="project-title">Tower</h2>
-        <p class="project-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda sapiente officiis enim
-          voluptatem minus
-          ipsum non autem, vero nulla adipisci saepe. Corrupti nemo quos atque doloremque deleniti, distinctio optio
-          exercitationem.</p>
+        <p class="project-text">Tower is a mock ticket and event organization website. Users with an account are able to
+          get tickets,
+          create events, attend events, and leave comments on events. Built in accordance with a robust figma and strict
+          set of requirements.</p>
+        <h2 class="project-tools">Node JS ◾ Vue ◾ Mongo DB ◾ Bootstrap</h2>
       </div>
     </section>
     <section class="row contact-area justify-content-center">
       <div class="col-12 d-flex justify-content-center align-items-center">
         <h2 class="banner-text"><b>Contact</b></h2>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-12">
         <form class="row contact-form elevation-3">
-          <div class="col-6 d-flex flex-column">
+          <div class="col-md-6 col-12 d-flex flex-column">
             <label>
               <h3><b>Name</b></h3>
             </label>
             <input type="text" class="my-3">
           </div>
-          <div class="col-6 d-flex flex-column">
+          <div class="col-md-6 col-12 d-flex flex-column">
             <label>
               <h3><b>Email Address</b></h3>
             </label>
@@ -186,12 +197,30 @@ textarea {
 
 .about-area {
   background-color: #efefef;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 10vh;
+  padding-bottom: 10vh;
 
   .banner-text {
     color: #EB5722;
   }
+
+  p {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.portrait {
+  min-height: 50vh;
+  object-fit: cover;
+  border-radius: 13px;
+  margin: 3rem;
+}
+
+.about-description {
+  min-height: 50vh;
+  margin: 3rem;
 }
 
 .banner {
@@ -239,6 +268,9 @@ textarea {
 }
 
 .icon {
+  font-size: 4rem;
+  padding: 1rem;
+  color: #EB5722;
   transition: .3s;
 }
 
@@ -308,9 +340,14 @@ textarea {
 
 .project-title {
   font-weight: 900;
-  font-size: 2rem;
+  font-size: 3rem;
   padding: 1rem;
   color: #EB5722;
+}
+
+.project-tools {
+  color: #EB5722;
+  font-size: 2rem;
 }
 
 .contact-area {
