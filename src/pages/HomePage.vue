@@ -358,6 +358,7 @@ textarea {
 
   .banner-text {
     color: #EB5722;
+    margin-bottom: 10vh;
   }
 }
 
@@ -366,6 +367,7 @@ textarea {
   border: 10px solid white;
   padding: 1rem;
   border-radius: 13px;
+  margin-bottom: 10vh;
   color: #EB5722;
 }
 
