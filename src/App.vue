@@ -15,9 +15,11 @@ export default {
     return {
       appState: computed(() => AppState)
     }
+
   },
 }
 </script>
+
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
