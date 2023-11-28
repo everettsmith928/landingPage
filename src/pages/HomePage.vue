@@ -110,7 +110,9 @@
         <h2 class="project-tools">Node JS ◾ Vue ◾ Mongo DB ◾ Spotify API ◾ Bootstrap</h2>
       </div>
       <div class="col-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
-        <h2 class="project-title">Keepr</h2>
+        <a href="http://52.37.45.27/tower/#/">
+          <h2 class="project-title">Keepr</h2>
+        </a>
         <p class="project-text">Keepr is a mock social media image sharing web application. Keepr has a C# backend, and
           Vue frontend. Utilizing a My SQL database, allowing users to store image links and have private vaults where
           they can store user information and images. Images have a view count, and are able to be favorited.</p>
@@ -123,7 +125,9 @@
         <img src="../assets/img/blob-scene-haikei.svg" class="img-fluid project-image elevation-3">
       </div>
       <div class="col-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
-        <h2 class="project-title">Tower</h2>
+        <a href="http://52.37.45.27/tower/#/">
+          <h2 class="project-title">Tower</h2>
+        </a>
         <p class="project-text">Tower is a mock ticket and event organization website. Users with an account are able to
           get tickets,
           create events, attend events, and leave comments on events. Built in accordance with a robust figma and strict
@@ -377,5 +381,4 @@ textarea {
   border-radius: 8px;
   color: #efefef;
   font-size: 2rem;
-}
-</style>
+}</style>
