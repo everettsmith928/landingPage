@@ -1,17 +1,8 @@
 <template>
   <section class="container-fluid main-content">
-    <!-- <section class="row navigation">
-      <div class="col-6 d-flex justify-content-center">
-        Here is the navigation area
-      </div>
-      <div class="col-6 d-flex justify-content-center">
-        Here is the second nav area
-      </div>
-    </section> -->
     <section class="row splash-area text-center elevation-3">
       <div class="col-12 splash-heading d-flex flex-column align-items-center justify-content-center">
         <div class="profile-picture">
-          a
         </div>
         <h2 class="text-start m-3 splash-heading-text">
           <b>I'm Everett.<br>
@@ -42,11 +33,11 @@
           projects, and solving complex problems.</p>
         <p>I attended Codeworks Full Stack Immersion Bootcamp course from August of this year to November. At CodeWorks we
           learned Agile software development strategies as well as working with others. Beyond that we learned plenty of
-          languages and devoted many hours to building multiple reactive applications. I
+          languages and devoted many hours to building multiple technical reactive applications. I
           excelled in JavaScript and front-end development. My learning time spent at CodeWorks was robust and I really
           enjoy anything technical. I now have
           a strong foundation for building out personal projects and working on new exciting applications. My learning
-          journey has just begun</p>
+          journey has just begun!</p>
         <p>🧘 You can find me doing yoga, reading a book, or at the gym in my free time.</p>
       </div>
     </section>
@@ -140,30 +131,24 @@
         <h2 class="banner-text"><b>Contact</b></h2>
       </div>
       <div class="col-md-6 col-12">
-        <form class="row contact-form elevation-3">
+        <form ref="emailForm" class="row contact-form elevation-3" @submit.prevent="sendMail" id="formEmail">
           <div class="col-md-6 col-12 d-flex flex-column">
             <label>
               <h3><b>Name</b></h3>
             </label>
-            <input type="text" class="my-3">
+            <input type="text" class="my-3" id="from_name" name="from_name" maxlength="1000" required>
           </div>
           <div class="col-md-6 col-12 d-flex flex-column">
             <label>
               <h3><b>Email Address</b></h3>
             </label>
-            <input type="text" class="my-3">
-          </div>
-          <div class="col-12 d-flex flex-column">
-            <label>
-              <h3><b>Title</b></h3>
-            </label>
-            <input type="text" class="my-3">
+            <input type="email" class="my-3" id="email_id" name="email_id" maxlength="1000" required>
           </div>
           <label>
             <h3><b>Message</b></h3>
           </label>
-          <textarea rows="15" class="my-3"></textarea>
-          <button class="form-button">Submit</button>
+          <textarea rows="15" class="my-3" id="message" maxlength="1000" name="message" required></textarea>
+          <button class="form-button" type="submit">Submit</button>
         </form>
       </div>
     </section>
@@ -171,9 +156,23 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import emailjs from '@emailjs/browser';
+
 export default {
   setup() {
-    return {}
+    return {
+      sendMail() {
+        let formBody = document.getElementById("formEmail")
+        console.log(formBody)
+        emailjs.sendForm('service_0ini5fb', 'template_dao22zl', formBody, 'Ak3Wm-aVP-5uWpjpf')
+          .then((result) => {
+            console.log('SUCCESS!', result.text);
+          }, (error) => {
+            console.log('FAILED...', error.text);
+          });
+      }
+    }
   }
 }
 </script>
@@ -313,7 +312,14 @@ textarea {
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  background-color: white;
+  background-color: #EB5722;
+  transition: 1s;
+}
+
+.profile-picture:hover {
+  background-color: #f79977;
+  height: 50px;
+  width: 400px;
 }
 
 .project-row {
