@@ -2,8 +2,7 @@
   <section class="container-fluid main-content">
     <section class="row splash-area text-center elevation-3">
       <div class="col-12 splash-heading d-flex flex-column align-items-center justify-content-center">
-        <div class="profile-picture">
-        </div>
+
         <h2 class="text-start m-3 splash-heading-text">
           <b>I'm Everett.<br>
             A Full Stack Web Developer</b>
@@ -54,6 +53,7 @@
         <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>Vue</h3>
         <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>HTML</h3>
         <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>CSS</h3>
+        <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>React</h3>
       </div>
       <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
         <div class="text-center">
@@ -85,10 +85,10 @@
         <h3 class="splash-heading-text"><b>Projects</b></h3>
       </div>
       <div class="col-5 d-flex justify-content-center align-items-center screenshot">
-        <img src="../assets/img/blob-scene-haikei.svg" class="img-fluid project-image elevation-3">
+        <img src="../assets/img/Stackify.png" class="img-fluid project-image elevation-3">
       </div>
       <div class="col-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
-        <h2 class="project-title">Stackify</h2>
+        <h2 class="project-title"><a href="https://github.com/tylermarcott/StackifyCapstone">Stackify</a></h2>
         <p class="project-text">Stackify is a Spotify Premium user extension that allows DJs and event planners to
           creatively organize event
           playlists, speeches, and write important notes while hosting an event. Built by a team of 4 developers at
@@ -101,7 +101,7 @@
         <h2 class="project-tools">Node JS ◾ Vue ◾ Mongo DB ◾ Spotify API ◾ Bootstrap</h2>
       </div>
       <div class="col-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
-        <h2 class="project-title">Keepr</h2>
+        <h2 class="project-title"><a href="https://github.com/everettsmith928/keepr">Keepr</a></h2>
         <p class="project-text">Keepr is a mock social media image sharing web application. Keepr has a C# backend, and
           Vue frontend. Utilizing a My SQL database, allowing users to store image links and have private vaults where
           they can store user information and images. Images have a view count, and are able to be favorited.</p>
@@ -115,7 +115,7 @@
       </div>
       <div class="col-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
         <a href="http://52.37.45.27/tower/#/">
-          <h2 class="project-title">Tower</h2>
+          <h2 class="project-title"><a href="https://github.com/everettsmith928/theTower">Tower</a></h2>
         </a>
         <p class="project-text">Tower is a mock ticket and event organization website. Users with an account are able to
           get tickets,
