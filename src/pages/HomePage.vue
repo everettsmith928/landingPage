@@ -15,8 +15,9 @@
         <a href="https://www.linkedin.com/in/everett-smith-811b57132/" title="Indeed Link" target="_blank">
           <h3 class="icon"><i class="icon mdi mdi-linkedin"></i></h3>
         </a>
-        <h3 class="icon" title="Download Resume"><a href="src/assets/documents/EverettSmithResume.pdf"
-            download="Everett_Smith_Resume.pdf"><i class="icon mdi mdi-note"></i></a></h3>
+        <h3 class="icon" title="Download Resume"><a
+            href="https://drive.google.com/file/d/1QcSH5A2FphO8DVJok3ezrTQHE5YXnXOb/view?usp=drive_link"
+            target="_blank"><i class="icon mdi mdi-note"></i></a></h3>
       </div>
     </section>
     <section class="row about-area justify-content-center">
