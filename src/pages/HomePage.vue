@@ -41,6 +41,8 @@
           enjoy anything technical. I now have
           a strong foundation for building out personal projects and working on new exciting applications. My learning
           journey has just begun!</p>
+        <p class="roboto">Now I am working on multiple passion projects and looking to start my career in the development
+          space.</p>
         <p class="roboto">🧘 You can find me doing yoga, reading a book, or at the gym in my free time.</p>
       </div>
     </section>
@@ -88,11 +90,39 @@
       <div class="col-12 d-flex justify-content-center skill-title">
         <h3 class="splash-heading-text bebas"><b>Projects</b></h3>
       </div>
+      <div class="col-12 d-flex flex-column align-items-center justify-content-center skill-title">
+        <a href="https://stackify-jch3.onrender.com/" target="_blank" title="Stackify Project Link">
+          <p class="bebas project-links">Stackify</p>
+        </a>
+        <p class="bebas project-links">The Boise Menu</p>
+        <a href="https://github.com/everettsmith928/theTower" title="Tower Github" target="_blank">
+          <p class="bebas project-links">Tower</p>
+        </a>
+        <a href="https://xrpl-wallet.onrender.com/" title="XRPL Project Link" target="_blank">
+          <p class="bebas project-links">XRPL Browser Wallet</p>
+        </a>
+
+      </div>
+    </section>
+    <section class="row stackify-row justify-content-center">
+      <div class="col-12" id="stackify">
+        <h2 class="project-title bebas text-center">Stackify</h2>
+        <a href="https://stackify-jch3.onrender.com/" target="_blank" title="Project Link">
+          <p class="roboto text-center">Open Project</p>
+        </a>
+
+      </div>
       <div class="col-12 col-lg-5 d-flex justify-content-center align-items-center screenshot">
         <img src="../assets/img/Stackify.png" class="img-fluid project-image elevation-3">
       </div>
-      <div class="col-12 col-lg-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
-        <h2 class="project-title bebas"><a href="https://stackify-jch3.onrender.com/" target="_blank">Stackify</a></h2>
+      <div class="col-12 col-lg-5 d-flex justify-content-center align-items-center screenshot">
+        <img src="../assets/img/stackify2.png" class="img-fluid project-image elevation-3">
+      </div>
+      <div class="col-12 col-lg-7 d-flex justify-content-center align-items-center screenshot">
+        <img src="../assets/img/stackify3.png" class="img-fluid project-image elevation-3">
+      </div>
+      <div class="col-12 col-lg-8 d-flex flex-column justify-content-center project-description align-items-center g-3"
+        id="stackify-area">
         <p class="project-text roboto">Stackify is a Spotify Premium user extension that allows DJs and event planners to
           creatively organize event
           playlists, speeches, and write important notes while hosting an event. Built by a team of 4 developers at
@@ -103,39 +133,60 @@
           and come up with creative ways for the user to manage and edit
           playlists. This entire robust full-stack application was created within 2 weeks.</p>
         <a href="https://github.com/everettsmith928/StackifyCapstone" target="_blank">
-          <h2 class="project-tools roboto">Github</h2>
+          <h2 class="bebas">View Github</h2>
         </a>
-        <h2 class="project-tools">Node JS ◾ Vue ◾ Mongo DB ◾ Spotify API ◾ Bootstrap</h2>
+        <h2 class="project-tools bebas p-5">Node JS | Vue | Mongo DB | Spotify API | Bootstrap | Auth0</h2>
+      </div>
+    </section>
+    <section class="row boise-row justify-content-center">
+      <div class="col-12">
+        <h2 class="project-title bebas text-center">The Boise Menu</h2>
       </div>
       <div class="col-12 col-lg-5 d-flex justify-content-center align-items-center screenshot">
         <img src="../assets/img/boisemenu.png" class="img-fluid project-image elevation-3">
       </div>
-      <div class="col-12 col-lg-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
-        <h2 class="project-title bebas">The Boise Menu</h2>
+      <div class="col-12 col-lg-8 d-flex flex-column justify-content-center project-description align-items-center g-3">
         <p class="project-text roboto">The Boise Menu is a an ambitious passion project built by a small team of
-          developers to change the way that users rate and search for restaurants on the web,
+          developers to change the way that users rate and search for restaurants on the web. Mainly built with React,
           JavaScript, C# and SQL. A website for optimizing
           restaurant entree searching without having to
-          navigate through multiple restaurant websites. My contribution to the team is digital hand drawings, UX and
+          navigate through multiple restaurant websites to find the dish you are looking for locally. My contribution to
+          the team is digital hand drawings, UX and
           front-end design as well as
-          some web scraping and Javascript.</p>
-        <h2 class="project-tools">C# ◾ JavaScript ◾ React ◾ My SQL ◾ .NET </h2>
+          some web scraping.</p>
+        <h2 class="project-tools bebas green">C# | JavaScript | React | My SQL | .NET | Python </h2>
       </div>
-
-      <div class="col-12 col-lg-5 d-flex justify-content-center align-items-center screenshot">
-        <img src="../assets/img/blob-scene-haikei.svg" class="img-fluid project-image elevation-3">
-      </div>
-      <div class="col-12 col-lg-5 d-flex flex-column justify-content-center project-description align-items-center g-3">
-        <a href="http://52.37.45.27/tower/#/">
-          <h2 class="project-title bebas"><a href="https://github.com/everettsmith928/theTower" target="_blank">Tower</a>
-          </h2>
+    </section>
+    <section class="tower-row row justify-content-center">
+      <div class="col-12">
+        <a href="https://github.com/everettsmith928/theTower" target="_blank">
+          <h2 class="project-title bebas text-center">Tower</h2>
         </a>
+      </div>
+      <div class="col-12 col-lg-8 d-flex flex-column justify-content-center project-description align-items-center g-3">
         <p class="project-text roboto">Tower is a mock ticket and event organization website. Users with an account are
           able to
           get tickets,
           create events, attend events, and leave comments on events. Built in accordance with a robust figma and strict
           set of requirements.</p>
-        <h2 class="project-tools">Node JS ◾ Vue ◾ Mongo DB ◾ Bootstrap</h2>
+        <h2 class="project-tools bebas">Node JS | Vue | Mongo DB | Spotify API | Bootstrap | Auth0</h2>
+      </div>
+    </section>
+    <section class="row xrpl-row justify-content-center">
+      <div class="col-12">
+        <a href="https://xrpl-wallet.onrender.com/" title="XRPL Project Link" target="_blank">
+          <h2 class="project-title bebas text-center">XRPL Testnet Browser Wallet</h2>
+          <p class="roboto text-center">Open Project</p>
+        </a>
+      </div>
+      <div class="col-12 col-lg-5 d-flex justify-content-center align-items-center screenshot">
+        <img src="../assets/img/xrpl-wallet.png" class="img-fluid project-image elevation-3">
+      </div>
+      <div class="col-12 col-lg-8 d-flex flex-column justify-content-center project-description align-items-center g-3">
+        <p class="project-text roboto">This is a wallet built for testing the XRPL in real time on the test net. Created
+          using the Javascript tutorial it utilizes the xrpl.js to send xrp between wallets. Feel free to follow the link
+          and send XRP to a valid testnet address on the ledger.</p>
+        <h2 class="project-tools bebas green">XRPL.JS | JavaScript | Yarn </h2>
       </div>
     </section>
     <section class="row contact-area justify-content-center">
@@ -203,6 +254,10 @@ export default {
 .fade {
   animation-name: Text-fade-In;
   animation-duration: 2s;
+}
+
+.green {
+  color: #224625;
 }
 
 input {
@@ -367,18 +422,93 @@ a {
 
 .project-row {
   background-color: #efefef;
+}
+
+.tower-row {
   padding-bottom: 20vh;
+  padding-top: 20vh;
+  background-color: #eee;
+  border: 20px solid #EB5722;
+
+  .project-description,
+  .project-tools {
+    color: #EB5722;
+  }
+
+  .project-title {
+    color: #EB5722;
+  }
+}
+
+.xrpl-row {
+  padding-bottom: 20vh;
+  padding-top: 20vh;
+  background-color: #242424;
+  border: 20px solid #EB5722;
+
+  .project-description,
+  .project-tools {
+    color: white;
+  }
+
+  .project-title,
+  a {
+    color: white;
+  }
+}
+
+.stackify-row {
+  padding-bottom: 20vh;
+  padding-top: 20vh;
+  background-color: #242424;
+  border: 20px solid #EB5722;
+
+  .project-description,
+  .project-tools {
+    color: #eee;
+  }
+
+  a,
+  .project-title {
+    color: #ea94ff;
+  }
+
+}
+
+.boise-row {
+  border: 20px solid #EB5722;
+  background-color: #F8F7E8;
+  padding-bottom: 20vh;
+  padding-top: 20vh;
+
+  .project-description {
+    color: #224625;
+  }
+
+  .project-tools {
+    color: #224625;
+  }
+
+  .project-title {
+    color: #224625;
+  }
+}
+
+.project-links {
+  font-size: 3rem;
+  color: #EB5722;
 }
 
 .project-description {
-  border-bottom: 5px solid #EB5722;
   min-height: 20vh;
   margin-bottom: 10vh;
 }
 
+
+
 .project-text {
   margin: 3rem;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .screenshot {
@@ -393,13 +523,11 @@ a {
 
 .project-title {
   font-weight: 900;
-  font-size: 3rem;
+  font-size: 5rem;
   padding: 1rem;
-  color: #EB5722;
 }
 
 .project-tools {
-  color: #EB5722;
   font-size: 2rem;
 }
 
