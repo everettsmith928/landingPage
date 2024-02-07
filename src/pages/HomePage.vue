@@ -3,7 +3,7 @@
     <section class="row splash-area text-center elevation-3 fade">
       <div class="col-12 splash-heading d-flex flex-column align-items-center justify-content-center">
 
-        <h2 class="text-start m-3 splash-heading-text bebas fade">
+        <h2 class="text-start splash-heading-text bebas slide">
           <b>I'm Everett.<br>
             A Full Stack Web Developer</b>
         </h2>
@@ -251,9 +251,24 @@ export default {
   }
 }
 
+@keyframes Text-Slide-In {
+  0% {
+    margin-left: -150%;
+  }
+
+  100% {
+    margin-left: 0%;
+  }
+}
+
 .fade {
   animation-name: Text-fade-In;
   animation-duration: 2s;
+}
+
+.slide {
+  animation: Text-Slide-In;
+  animation-duration: 1.5s;
 }
 
 .green {
