@@ -57,9 +57,10 @@
           <h2 class="skill-subtitle bebas">Front End</h2>
         </div>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Javascript</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Vue</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>GSAP</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Polaris</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Shadcn</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Vue</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>React</h3>
       </div>
       <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
@@ -69,8 +70,10 @@
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Node</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Express</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>C#</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Java</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>PM2 WINSCP PUTTY EC2</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Mongoose</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Stripe</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Axios</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Firebase</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>My SQL</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Mongo</h3>
@@ -81,6 +84,7 @@
           <h2 class="skill-subtitle bebas">Design</h2>
         </div>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Adobe Suite</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Figma</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Photography</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Color Theory</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Drawing</h3>
