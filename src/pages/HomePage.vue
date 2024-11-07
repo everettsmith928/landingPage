@@ -230,9 +230,11 @@
 <script>
 import { ref } from "vue";
 import emailjs from '@emailjs/browser';
+import gsap from "gsap";
 
 export default {
   setup() {
+
     return {
       sendMail() {
         let formBody = document.getElementById("formEmail")
