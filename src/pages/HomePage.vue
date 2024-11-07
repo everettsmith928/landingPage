@@ -57,23 +57,23 @@
           <h2 class="skill-subtitle bebas">Front End</h2>
         </div>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Javascript</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Bootstrap</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Polaris</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Shadcn</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Vue</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>HTML</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>CSS</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>React</h3>
       </div>
       <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
         <div class="text-center">
           <h2 class="skill-subtitle bebas">Back End</h2>
         </div>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Node JS</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Node</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Express</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>C#</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Java</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Mongoose</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Firebase</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>My SQL</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Mongo</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Express</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>XRPL</h3>
       </div>
       <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
