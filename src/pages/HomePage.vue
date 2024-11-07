@@ -27,11 +27,13 @@
         <img src="../assets/img/headshot1.jpg" alt="portrait" class="img-fluid portrait elevation-4">
       </div>
       <div class="col-md-5 col-12 d-flex flex-column justify-content-center about-description">
-        <p>Coming from a decade long fine art background, and now moving into the Full Stack Development world. I began my
+        <p>Coming from a decade long fine art background, and now moving into the Full Stack Development world. I began
+          my
           coding
           journey at the beginning of 2023. I have hundreds of hours towards learning to code, developing
           projects, and solving complex problems.</p>
-        <p>I attended Codeworks Full Stack Immersion Bootcamp course from August of this year to November. At CodeWorks we
+        <p>I attended Codeworks Full Stack Immersion Bootcamp course from August of this year to November. At CodeWorks
+          we
           learned Agile software development strategies as well as working with others. Beyond that we learned plenty of
           languages and devoted many hours to building multiple technical reactive applications. I
           excelled in JavaScript and front-end development. My learning time spent at CodeWorks was robust and I really
@@ -50,10 +52,9 @@
           <h2 class="skill-subtitle">Front End</h2>
         </div>
         <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>Javascript</h3>
-        <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>Bootstrap</h3>
+        <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>Shadcn</h3>
         <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>Vue</h3>
-        <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>HTML</h3>
-        <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>CSS</h3>
+        <h3 class="skill-text"><i class="mdi mdi-circle mx-4"></i>React</h3>
       </div>
       <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
         <div class="text-center">
@@ -92,7 +93,8 @@
         <p class="project-text">Stackify is a Spotify Premium user extension that allows DJs and event planners to
           creatively organize event
           playlists, speeches, and write important notes while hosting an event. Built by a team of 4 developers at
-          CodeWorks we see Stackify as the capstone of our development journey at bootcamp.<br><br> Utilizing the Spotify
+          CodeWorks we see Stackify as the capstone of our development journey at bootcamp.<br><br> Utilizing the
+          Spotify
           API,
           agile development methods, and creative technical solutions Stackify allows users to access rich information
           about songs,
@@ -387,4 +389,5 @@ textarea {
   border-radius: 8px;
   color: #efefef;
   font-size: 2rem;
-}</style>
+}
+</style>
