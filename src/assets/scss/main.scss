@@ -4,7 +4,7 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 
-body{
+body {
   overscroll-behavior: none;
 }
 
@@ -30,6 +30,7 @@ select {
     &:valid {
       border: 1px solid $success;
     }
+
     &:invalid {
       border: 1px solid $danger;
     }
@@ -40,3 +41,35 @@ form:invalid button[type="submit"] {
   filter: grayscale(1);
   pointer-events: none;
 }
+
+/* SCSS HEX */
+$porcelain: #f7f7f2ff;
+$beige: #e4e6c3ff;
+$palm-leaf: #899878ff;
+$carbon-black: #222725ff;
+$onyx: #121113ff;
+
+/* SCSS HSL */
+$porcelain: hsla(60, 24%, 96%, 1);
+$beige: hsla(63, 41%, 83%, 1);
+$palm-leaf: hsla(88, 13%, 53%, 1);
+$carbon-black: hsla(156, 7%, 14%, 1);
+$onyx: hsla(270, 6%, 7%, 1);
+
+/* SCSS RGB */
+$porcelain: rgba(247, 247, 242, 1);
+$beige: rgba(228, 230, 195, 1);
+$palm-leaf: rgba(137, 152, 120, 1);
+$carbon-black: rgba(34, 39, 37, 1);
+$onyx: rgba(18, 17, 19, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #f7f7f2ff, #e4e6c3ff, #899878ff, #222725ff, #121113ff);
+$gradient-right: linear-gradient(90deg, #f7f7f2ff, #e4e6c3ff, #899878ff, #222725ff, #121113ff);
+$gradient-bottom: linear-gradient(180deg, #f7f7f2ff, #e4e6c3ff, #899878ff, #222725ff, #121113ff);
+$gradient-left: linear-gradient(270deg, #f7f7f2ff, #e4e6c3ff, #899878ff, #222725ff, #121113ff);
+$gradient-top-right: linear-gradient(45deg, #f7f7f2ff, #e4e6c3ff, #899878ff, #222725ff, #121113ff);
+$gradient-bottom-right: linear-gradient(135deg, #f7f7f2ff, #e4e6c3ff, #899878ff, #222725ff, #121113ff);
+$gradient-top-left: linear-gradient(225deg, #f7f7f2ff, #e4e6c3ff, #899878ff, #222725ff, #121113ff);
+$gradient-bottom-left: linear-gradient(315deg, #f7f7f2ff, #e4e6c3ff, #899878ff, #222725ff, #121113ff);
+$gradient-radial: radial-gradient(#f7f7f2ff, #e4e6c3ff, #899878ff, #222725ff, #121113ff);
