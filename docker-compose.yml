@@ -1,0 +1,7 @@
+services:
+  web:
+    image: ${IMAGE:-ghcr.io/OWNER/REPO:latest}
+    container_name: landingpage
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
