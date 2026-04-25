@@ -33,7 +33,8 @@
           coding
           journey at the beginning of 2023. I have hundreds of hours towards learning to code, developing
           projects, and solving complex problems.</p>
-        <p class="roboto">I attended Codeworks Full Stack Immersion Bootcamp course from August of this year to November.
+        <p class="roboto">I attended Codeworks Full Stack Immersion Bootcamp course from August of this year to
+          November.
           At CodeWorks we
           learned Agile software development strategies as well as working with others. Beyond that we learned plenty of
           languages and devoted many hours to building multiple technical reactive applications. I
@@ -41,7 +42,8 @@
           enjoy anything technical. I now have
           a strong foundation for building out personal projects and working on new exciting applications. My learning
           journey has just begun!</p>
-        <p class="roboto">Now I am working on multiple passion projects and looking to start my career in the development
+        <p class="roboto">Now I am working on multiple passion projects and looking to start my career in the
+          development
           space.</p>
         <p class="roboto">🧘 You can find me doing yoga, reading a book, or at the gym in my free time.</p>
       </div>
@@ -55,23 +57,26 @@
           <h2 class="skill-subtitle bebas">Front End</h2>
         </div>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Javascript</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Bootstrap</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Vue</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>HTML</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>CSS</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>GSAP</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Polaris</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Shadcn</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>React</h3>
       </div>
       <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
         <div class="text-center">
           <h2 class="skill-subtitle bebas">Back End</h2>
         </div>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Node JS</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Node</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Express</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>C#</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Java</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>PM2 WINSCP PUTTY EC2</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Mongoose</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Stripe</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Axios</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Firebase</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>My SQL</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Mongo</h3>
-        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Express</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>XRPL</h3>
       </div>
       <div class="banner col-lg-3 col-10 d-flex flex-column elevation-4">
@@ -79,6 +84,7 @@
           <h2 class="skill-subtitle bebas">Design</h2>
         </div>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Adobe Suite</h3>
+        <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Figma</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Photography</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Color Theory</h3>
         <h3 class="skill-text roboto"><i class="mdi mdi-circle mx-4"></i>Drawing</h3>
@@ -123,10 +129,12 @@
       </div>
       <div class="col-12 col-lg-8 d-flex flex-column justify-content-center project-description align-items-center g-3"
         id="stackify-area">
-        <p class="project-text roboto">Stackify is a Spotify Premium user extension that allows DJs and event planners to
+        <p class="project-text roboto">Stackify is a Spotify Premium user extension that allows DJs and event planners
+          to
           creatively organize event
           playlists, speeches, and write important notes while hosting an event. Built by a team of 4 developers at
-          CodeWorks we see Stackify as the capstone of our development journey at bootcamp.<br><br> Utilizing the Spotify
+          CodeWorks we see Stackify as the capstone of our development journey at bootcamp.<br><br> Utilizing the
+          Spotify
           API,
           agile development methods, and creative technical solutions Stackify allows users to access rich information
           about songs,
@@ -184,7 +192,8 @@
       </div>
       <div class="col-12 col-lg-8 d-flex flex-column justify-content-center project-description align-items-center g-3">
         <p class="project-text roboto">This is a wallet built for testing the XRPL in real time on the test net. Created
-          using the Javascript tutorial it utilizes the xrpl.js to send xrp between wallets. Feel free to follow the link
+          using the Javascript tutorial it utilizes the xrpl.js to send xrp between wallets. Feel free to follow the
+          link
           and send XRP to a valid testnet address on the ledger.</p>
         <h2 class="project-tools bebas green">XRPL.JS | JavaScript | Yarn </h2>
       </div>
@@ -221,9 +230,11 @@
 <script>
 import { ref } from "vue";
 import emailjs from '@emailjs/browser';
+import gsap from "gsap";
 
 export default {
   setup() {
+
     return {
       sendMail() {
         let formBody = document.getElementById("formEmail")
