@@ -10,31 +10,33 @@ body {
 }
 
 // Background Classes
+
 .bg-radial-gradient {
   background-image: $gradient-left;
 }
 
-.bg-darkest {
+.bg-onyx {
   background-color: $onyx;
 }
 
-.bg-dark {
+.bg-carbon {
   background-color: $carbon-black;
 }
 
-.bg-light {
+.bg-beige {
   background-color: $beige;
 }
 
-.bg-green {
+.bg-palm {
   background-color: $palm-leaf;
 }
 
-.bg-white {
+.bg-porcelain {
   background-color: $porcelain;
 }
 
 // Title Classes
+
 h1,
 h2,
 h3,
@@ -52,7 +54,7 @@ h6,
   margin: 0px;
 }
 
-.text-green {
+.text-palm {
   color: $palm-leaf;
 }
 
@@ -86,3 +88,11 @@ h6,
   line-height: 1;
   letter-spacing: 0rem;
 }
+
+// Decorational Classes
+
+.shadow-palm {
+  box-shadow: 10px 10px 50px $palm-leaf;
+}
+
+.shadow-beige {}
