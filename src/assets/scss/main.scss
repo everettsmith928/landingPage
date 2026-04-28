@@ -10,6 +10,11 @@ body {
   font-family: $font-serif;
 }
 
+a {
+  font-size: 1.25rem;
+  color: $palm-leaf;
+}
+
 // Background Classes
 
 .bg-radial-gradient {
@@ -64,6 +69,10 @@ h6,
   color: $beige;
 }
 
+.text-porcelain {
+  color: $porcelain;
+}
+
 // Font Classes
 .font-xlarge {
   font-size: 8rem;
@@ -97,6 +106,14 @@ h6,
   box-shadow: 0px 0px 40px $palm-leaf;
 }
 
+.shadow-palm.ghost {
+  box-shadow: 1px 1px 100px $palm-leaf-ghost;
+}
+
+.shadow-carbon {
+  box-shadow: 0px 0px 40px $carbon-black;
+}
+
 .shadow-beige {
   box-shadow: 5px 5px 40px $beige;
 }
@@ -108,4 +125,8 @@ h6,
   opacity: 40%;
   background-color: $palm-leaf;
   box-shadow: 10px 10px 50px $palm-leaf;
+}
+
+.border-palm {
+  border: 1px solid $palm-leaf;
 }

@@ -1,6 +1,7 @@
 $porcelain: #f7f7f2;
 $beige: #e4e6c3;
 $palm-leaf: #899878;
+$palm-leaf-ghost: #89987820;
 $carbon-black: #222725;
 $onyx: #121113;
 
@@ -10,6 +11,7 @@ $gradient-bottom: linear-gradient(180deg, $porcelain, $beige, $palm-leaf, $carbo
 $gradient-left: linear-gradient(270deg, $porcelain, $beige, $palm-leaf, $carbon-black, $onyx);
 $gradient-top-right: linear-gradient(45deg, $porcelain, $beige, $palm-leaf, $carbon-black, $onyx);
 $splash-gradient: radial-gradient(at top, $carbon-black 30%, $onyx 60%);
+$light-beam: radial-gradient(at top, $beige 1%, transparent 20%);
 $gradient-top-left: linear-gradient(225deg, $porcelain, $beige, $palm-leaf, $carbon-black, $onyx);
 $gradient-bottom-left: linear-gradient(315deg, $porcelain, $beige, $palm-leaf, $carbon-black, $onyx);
 $gradient-radial: radial-gradient($porcelain, $beige, $palm-leaf, $carbon-black, $onyx);
