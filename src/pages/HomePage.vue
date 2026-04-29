@@ -26,10 +26,7 @@
   <div class="spacer-palm"></div>
   <section class="introduction-section bg-onyx">
     <div class="bio-info">
-      <p class="font-small text-beige">Here is a test body of text. We will be adding information to this shortly. Here
-        is a test body of text. We will be adding information to this shortlyHere is a test body of text. We will be
-        adding information to this shortlyHere is a test body of text. We will be adding information to this shortlyHere
-        is a test body of text. We will be adding information to this shortly</p>
+
     </div>
   </section>
   <section class="portfolio-section">
@@ -44,7 +41,8 @@
           <div v-for="color in project.colors" :key="color" class="color-tile" :style="{ backgroundColor: color }">
           </div>
         </div>
-        <div class="project-header text-beige display-title font-medium bg-carbon border-palm">{{ project.title }}</div>
+        <div class="project-header text-beige display-title font-medium bg-carbon border-palm">
+          {{ project.title }}</div>
       </div>
     </div>
 
@@ -74,6 +72,9 @@
         </div>
       </div>
     </div>
+  </section>
+  <section class="about-section">
+
   </section>
 
 </template>
@@ -140,11 +141,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   stopFloat?.();
 });
-
-const registerVideo = (title, index, el) => {
-  if (!videoRefs.value[title]) videoRefs.value[title] = [];
-  videoRefs.value[title][index] = el;
-};
 
 const registerActiveVideo = (index, el) => {
   activeVideoRefs.value[index] = el;
@@ -410,5 +406,9 @@ defineExpose({ cycleVideo });
 .project-body {
   min-height: 0;
   flex: 1;
+}
+
+.about-section {
+  min-height: 100dvh;
 }
 </style>
