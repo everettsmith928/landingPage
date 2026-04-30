@@ -13,6 +13,7 @@ body {
 a {
   font-size: 1.25rem;
   color: $palm-leaf;
+  text-decoration: none;
 }
 
 // Background Classes
@@ -92,6 +93,7 @@ h6,
   font-size: 2rem;
   letter-spacing: 0rem;
   line-height: .8;
+  font-weight: 400;
 }
 
 .font-small {

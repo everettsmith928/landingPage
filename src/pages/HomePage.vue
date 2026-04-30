@@ -1,8 +1,6 @@
 <template>
   <section class="landing-section">
     <div ref="lilyPlane" class="lily-plane">
-      <div class="ripples ripples-a"></div>
-      <div class="ripples ripples-b"></div>
       <div ref="floatingAsset" class="floating-asset">
         <div class="lily-bump"><img :src="lily" alt="" class="lily-img" /></div>
       </div>
@@ -12,31 +10,43 @@
       <div ref="floatingAsset3" class="floating-asset-3">
         <div class="lily-bump"><img :src="lily" alt="" class="lily-img" /></div>
       </div>
+      <div ref="floatingAsset4" class="floating-asset-4">
+        <div class="lily-bump"><img :src="lily" alt="" class="lily-img" /></div>
+      </div>
+      <div ref="floatingAsset5" class="floating-asset-5">
+        <div class="lily-bump"><img :src="lily" alt="" class="lily-img" /></div>
+      </div>
     </div>
     <div class="landing-splash">
-      <h2 class="display-title site-title text-palm font-xlarge">
-        Everett<br><span class="text-beige">Marsland</span><br>Smith
-      </h2>
-      <div class="accent-text">
-        <h3 class="display-subtitle text-beige">
-          Software Developer
-        </h3>
-        <h3 class="display-subtitle text-beige">
-          Photographer
-        </h3>
-        <h3 class="display-subtitle text-beige">
-          Painter
-        </h3>
+      <div class="site-title">
+        <h2 class="display-title text-palm font-xlarge">
+          <span ref="everett">Everett</span><br><span ref="marsland" class="text-beige">Marsland</span><br><span
+            ref="smith">Smith</span>
+        </h2>
+        <div class="spacer-palm"></div>
+        <h3 class="display-subtitle font-medium text-beige job-title">Fullstack Software Developer</h3>
+        <!-- <p class="name-definition text-palm font-small">// Marsland: The surname Marsland is of English origin and is
+          derived from
+          a geographical location. It signifies someone who lived near marshy land or a meadow close to a marsh. The
+          name is composed of two elements: "mersc," an Old English term for marsh, and "land," referring to an area of
+          land. Thus, Marsland literally translates to "marsh land."</p> -->
+      </div>
+      <div class="landing-navigation">
+        <div class="option-wrapper">
+          <a href="#portfolio-section" class="navigation-option text-beige">Portfolio</a>
+          <a class="navigation-option text-beige">About</a>
+          <a class="navigation-option text-beige">Resume</a>
+          <a class="navigation-option text-beige">Contact</a>
+        </div>
       </div>
     </div>
   </section>
-  <div class="spacer-palm"></div>
   <section class="introduction-section bg-onyx">
     <div class="bio-info">
 
     </div>
   </section>
-  <section class="portfolio-section">
+  <section id="portfolio-section" class="portfolio-section">
     <div class="section-card border-palm" v-for="project in projects" :key="project.title"
       @mouseenter="setFocused(project)" @mouseleave="unsetFocused()" @click="setActive(project)"
       :style="{ zIndex: project.title === focusedProject?.title ? 999 : project.zIndex }" :class="[project.bgClass, {
@@ -88,12 +98,11 @@
 
 <script setup>
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue';
-import { float, ripple, repel } from '../utils/GSAPAnimation.js';
+import { float, loadTitle, repel, underwaterFloat } from '../utils/GSAPAnimation.js';
 
 const teleportAuthFlow = new URL('../public/teleport_auth_flow.mp4', import.meta.url).href;
 const teleportLanding = new URL('../public/teleport_landing.mp4', import.meta.url).href;
 const lily = new URL('../public/lily1.png', import.meta.url).href;
-// const teleportSecondVideo = new URL('../assets/img/<your second filename>.mp4', import.meta.url).href;
 
 const mainLoading = ref(false);
 const projects = ref([
@@ -135,25 +144,29 @@ const videoRefs = ref({});
 const activeVideoRefs = ref([]);
 const activeVideoIndex = ref({});
 const activeSection = ref(null);
+const everett = ref(null);
+const marsland = ref(null);
+const smith = ref(null);
 const floatingAsset = ref(null);
 const floatingAsset2 = ref(null);
 const floatingAsset3 = ref(null);
+const floatingAsset4 = ref(null);
+const floatingAsset5 = ref(null);
 const lilyPlane = ref(null);
 let stopFloat = null;
-let stopRipple = null;
 let stopRepel = null;
 
 onMounted(() => {
   stopFloat = float(floatingAsset.value);
   float(floatingAsset2.value);
   float(floatingAsset3.value);
-  stopRipple = ripple(lilyPlane.value);
-  stopRepel = repel([floatingAsset.value, floatingAsset2.value, floatingAsset3.value]);
+  stopRepel = repel([floatingAsset.value, floatingAsset2.value, floatingAsset3.value, floatingAsset4.value, floatingAsset5.value]);
+  loadTitle([everett.value, marsland.value, smith.value]);
+  underwaterFloat(document.querySelectorAll(`.navigation-option`))
 });
 
 onBeforeUnmount(() => {
   stopFloat?.();
-  stopRipple?.();
   stopRepel?.();
 });
 
@@ -244,32 +257,17 @@ defineExpose({ cycleVideo });
   height: 100dvh;
   pointer-events: none;
   z-index: 1;
-  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 90%);
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 90%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 105%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 105%);
   background-image: radial-gradient($palm-leaf-ghost 0%, transparent 50%, transparent 100%)
 }
 
-.ripples {
-  position: absolute;
-  inset: 0;
-
-}
-
-// .ripples-a {
-//   background-image: repeating-linear-gradient(100deg,
-//       transparent 0,
-//       transparent 32px,
-//       rgba(255, 255, 255, 0.04) 32px,
-//       rgba(255, 255, 255, 0.06) 38px,
-//       transparent 38px,
-//       transparent 80px);
-// }
-
-.ripples-b {}
-
 .floating-asset,
 .floating-asset-2,
-.floating-asset-3 {
+.floating-asset-3,
+.floating-asset-4,
+.floating-asset-5 {
+  opacity: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,6 +293,16 @@ defineExpose({ cycleVideo });
   left: 80%;
 }
 
+.floating-asset-4 {
+  top: 20%;
+  left: 20%;
+}
+
+.floating-asset-5 {
+  top: 40%;
+  left: 90%;
+}
+
 .lily-bump {
   width: 100%;
   height: 100%;
@@ -310,15 +318,63 @@ defineExpose({ cycleVideo });
 }
 
 .site-title {
+  padding-left: 3rem;
+  padding-top: 2rem;
   z-index: 2;
+  mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 70%, transparent);
+  -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 70%, transparent);
+}
+
+.site-title span {
+  display: inline-block;
+}
+
+.job-title {
+  padding-left: 2rem;
+  margin-top: 2rem;
+}
+
+.name-definition {
+  padding-left: 2rem;
+  margin-top: 1rem;
+  max-width: 400px;
 }
 
 .landing-splash {
   min-height: 100dvh;
   padding-left: 1rem;
+  padding-right: 1rem;
   background-image: $splash-gradient;
   display: flex;
   justify-content: space-between;
+}
+
+.landing-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.option-wrapper {
+  -webkit-mask-image: linear-gradient(to bottom right, $onyx 10%, transparent 110%);
+  display: flex;
+  gap: 4rem;
+  padding: 2rem;
+  padding-bottom: 10dvh;
+  margin-top: 30dvh;
+}
+
+.navigation-option {
+  font-size: 3rem;
+  transition: .3s ease-in-out;
+  text-shadow: $palm-leaf 10px 5px 20px;
+}
+
+.navigation-option:hover {
+  color: $porcelain;
+  cursor: pointer;
+  text-shadow: $porcelain 1px 2px 5px;
 }
 
 .accent-text {

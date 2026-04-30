@@ -119,28 +119,82 @@ export function repel(elements, options = {}) {
   return () => gsap.ticker.remove(tick);
 }
 
-export function ripple(el) {
-  if (!el) return () => { };
+export function loadTitle(elements) {
+  // 3 length array, [0] Everett, [1] Marsland, [2] Smith
+  const splitChars = (el) => {
+    const text = el.textContent;
+    el.textContent = '';
+    return [...text].map((ch) => {
+      const span = document.createElement('span');
+      span.textContent = ch;
+      span.style.display = 'inline-block';
+      span.style.willChange = 'transform';
+      el.appendChild(span);
+      return span;
+    });
+  };
 
-  const layers = el.querySelectorAll('.ripples');
-  if (!layers.length) return () => { };
+  const everettChars = splitChars(elements[0]);
+  const marslandChars = splitChars(elements[1]);
+  const smithChars = splitChars(elements[2]);
+
+  const tl = gsap.timeline({ defaults: { duration: .8, ease: 'sine.inOut' } });
+  tl.fromTo(elements[1], { opacity: 0 }, { opacity: 1 })
+    .fromTo(elements[0], { opacity: 0 }, { opacity: 1 })
+    .fromTo(elements[2], { opacity: 0 }, { opacity: 1 });
+
+  const bobs = [...everettChars, ...marslandChars, ...smithChars].map((char) =>
+    gsap.to(char, {
+      y: gsap.utils.random(0, -6),
+      duration: gsap.utils.random(1.8, 3.2),
+      ease: 'sine.inOut',
+      yoyo: true,
+      repeat: -1,
+      delay: gsap.utils.random(0, 2),
+    })
+  );
+
+  return () => {
+    tl.kill();
+    bobs.forEach((b) => b.kill());
+  };
+}
+
+export function underwaterFloat(elements) {
+  // Subtly move up and down and perspective tilt on the x-axis. Each is independent
+  if (!elements?.length) return () => { };
 
   const tweens = [];
-  layers.forEach((layer, i) => {
-    const distance = 600;
-    const dx = i % 2 === 0 ? distance : -distance;
-    const dy = i % 2 === 0 ? distance : distance * 0.6;
-    const duration = 40 + i * 15;
+
+  elements.forEach((el) => {
+    if (!el) return;
+
+    gsap.set(el, { transformPerspective: 600, transformOrigin: '50% 50%' });
 
     tweens.push(
-      gsap.to(layer, {
-        backgroundPosition: `${dx}px ${dy}px`,
-        duration,
-        ease: 'none',
+      gsap.to(el, {
+        y: gsap.utils.random(-4, 75),
+        rotateX: 100,
+        scale: gsap.utils.random(.8, 1.3),
+        // rotateX: gsap.utils.random(4, 50) * (Math.random() < 0.5 ? -1 : 1),
+        duration: gsap.utils.random(2.6, 3.6),
+        ease: 'sine.inOut',
+        yoyo: true,
         repeat: -1,
-      })
+        delay: gsap.utils.random(0, 1.5),
+      }),
+      gsap.to(el, {
+        rotationY: gsap.utils.random(4, 20) * (Math.random() < 0.5 ? -1 : 1),
+        rotationX: gsap.utils.random(4, 50) * (Math.random() < 0.5 ? -1 : 1),
+        duration: gsap.utils.random(3.4, 4.8),
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: -1,
+        delay: gsap.utils.random(0, 1.5),
+      }),
     );
   });
 
   return () => tweens.forEach((t) => t.kill());
 }
+
