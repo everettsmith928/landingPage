@@ -1,6 +1,8 @@
 <template>
   <section class="landing-section">
-    <div class="lily-plane">
+    <div ref="lilyPlane" class="lily-plane">
+      <div class="ripples ripples-a"></div>
+      <div class="ripples ripples-b"></div>
       <div ref="floatingAsset" class="floating-asset">
         <img :src="lily" alt="" class="lily-img" />
       </div>
@@ -13,7 +15,7 @@
     </div>
     <div class="landing-splash">
       <h2 class="display-title site-title text-palm font-xlarge">
-        Everett<span class="text-beige">Marsland</span>Smith
+        Everett<br><span class="text-beige">Marsland</span><br>Smith
       </h2>
       <div class="accent-text">
         <h3 class="display-subtitle text-beige">
@@ -86,7 +88,7 @@
 
 <script setup>
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue';
-import { float } from '../utils/GSAPAnimation.js';
+import { float, ripple } from '../utils/GSAPAnimation.js';
 
 const teleportAuthFlow = new URL('../public/teleport_auth_flow.mp4', import.meta.url).href;
 const teleportLanding = new URL('../public/teleport_landing.mp4', import.meta.url).href;
@@ -136,16 +138,20 @@ const activeSection = ref(null);
 const floatingAsset = ref(null);
 const floatingAsset2 = ref(null);
 const floatingAsset3 = ref(null);
+const lilyPlane = ref(null);
 let stopFloat = null;
+let stopRipple = null;
 
 onMounted(() => {
   stopFloat = float(floatingAsset.value);
   float(floatingAsset2.value);
   float(floatingAsset3.value);
+  stopRipple = ripple(lilyPlane.value);
 });
 
 onBeforeUnmount(() => {
   stopFloat?.();
+  stopRipple?.();
 });
 
 const registerActiveVideo = (index, el) => {
@@ -235,7 +241,28 @@ defineExpose({ cycleVideo });
   height: 100dvh;
   pointer-events: none;
   z-index: 1;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 90%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 90%);
+  background-image: radial-gradient($palm-leaf-ghost 0%, transparent 50%, transparent 100%)
 }
+
+.ripples {
+  position: absolute;
+  inset: 0;
+
+}
+
+// .ripples-a {
+//   background-image: repeating-linear-gradient(100deg,
+//       transparent 0,
+//       transparent 32px,
+//       rgba(255, 255, 255, 0.04) 32px,
+//       rgba(255, 255, 255, 0.06) 38px,
+//       transparent 38px,
+//       transparent 80px);
+// }
+
+.ripples-b {}
 
 .floating-asset,
 .floating-asset-2,

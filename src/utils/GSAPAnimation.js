@@ -69,5 +69,27 @@ export function float(el, options = {}) {
 }
 
 export function ripple(el) {
-  // This needs to create extremely transparent waves eminating outwards from the center of lily-plane
+  if (!el) return () => { };
+
+  const layers = el.querySelectorAll('.ripples');
+  if (!layers.length) return () => { };
+
+  const tweens = [];
+  layers.forEach((layer, i) => {
+    const distance = 600;
+    const dx = i % 2 === 0 ? distance : -distance;
+    const dy = i % 2 === 0 ? distance : distance * 0.6;
+    const duration = 40 + i * 15;
+
+    tweens.push(
+      gsap.to(layer, {
+        backgroundPosition: `${dx}px ${dy}px`,
+        duration,
+        ease: 'none',
+        repeat: -1,
+      })
+    );
+  });
+
+  return () => tweens.forEach((t) => t.kill());
 }
