@@ -1,10 +1,15 @@
 <template>
   <section class="landing-section">
-    <div ref="floatingAsset" class="floating-asset bg-onyx text-beige shadow-carbon">
-    </div>
-    <div ref="floatingAsset2" class="floating-asset-2 bg-onyx text-beige shadow-carbon">
-    </div>
-    <div ref="floatingAsset3" class="floating-asset-3 bg-onyx text-beige shadow-carbon">
+    <div class="lily-plane">
+      <div ref="floatingAsset" class="floating-asset">
+        <img :src="lily" alt="" class="lily-img" />
+      </div>
+      <div ref="floatingAsset2" class="floating-asset-2">
+        <img :src="lily" alt="" class="lily-img" />
+      </div>
+      <div ref="floatingAsset3" class="floating-asset-3">
+        <img :src="lily" alt="" class="lily-img" />
+      </div>
     </div>
     <div class="landing-splash">
       <h2 class="display-title site-title text-palm font-xlarge">
@@ -85,6 +90,7 @@ import { float } from '../utils/GSAPAnimation.js';
 
 const teleportAuthFlow = new URL('../public/teleport_auth_flow.mp4', import.meta.url).href;
 const teleportLanding = new URL('../public/teleport_landing.mp4', import.meta.url).href;
+const lily = new URL('../public/lily1.png', import.meta.url).href;
 // const teleportSecondVideo = new URL('../assets/img/<your second filename>.mp4', import.meta.url).href;
 
 const mainLoading = ref(false);
@@ -214,30 +220,59 @@ defineExpose({ cycleVideo });
 <style scoped lang="scss">
 .landing-section {
   position: relative;
+  perspective: 1500px;
+  perspective-origin: 50% 0%;
+}
+
+.lily-plane {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotateX(-55deg);
+  transform-style: preserve-3d;
+  transform-origin: 50% 0%;
+  width: 100%;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-asset,
+.floating-asset-2,
+.floating-asset-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  background-image: radial-gradient($onyx 0%, $palm-leaf-ghost 30%, transparent 70%);
 }
 
 .floating-asset {
-  width: 100px;
-  height: 100px;
-  position: absolute;
   top: 20%;
   left: 50%;
 }
 
 .floating-asset-2 {
-  width: 95px;
-  height: 95px;
-  position: absolute;
   top: 10%;
   left: 40%;
+  transform: rotateX(180deg);
 }
 
 .floating-asset-3 {
-  width: 80px;
-  height: 80px;
-  position: absolute;
   top: 60%;
   left: 80%;
+}
+
+.lily-img {
+  display: block;
+  width: 80%;
+  height: 80%;
+}
+
+.site-title {
+  z-index: 2;
 }
 
 .landing-splash {

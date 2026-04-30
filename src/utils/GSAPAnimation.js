@@ -5,15 +5,18 @@ export function float(el, options = {}) {
 
   const {
     duration = 6,
-    rotation = 20,
-    rotationDuration = 8,
+    rotation = 180,
+    rotationDuration = 30,
     ease = 'sine.inOut',
   } = options;
 
   const parent = el.parentElement;
   if (!parent) return () => { };
 
-  gsap.set(el, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
+  const spinner = el.firstElementChild;
+
+  gsap.set(el, { xPercent: -50, yPercent: -50, x: 0, y: 0, transformOrigin: '50% 50%' });
+  if (spinner) gsap.set(spinner, { transformOrigin: '50% 50%' });
 
   const getBounds = () => {
     const pw = parent.clientWidth;
@@ -34,20 +37,13 @@ export function float(el, options = {}) {
 
   const moveToRandom = () => {
     const { minX, maxX, minY, maxY } = getBounds();
-    const targetX = gsap.utils.random(minX, maxX * .5);
-    const targetY = gsap.utils.random(minY, (maxY * .5));
+    const targetX = gsap.utils.random(minX, maxX);
+    const targetY = gsap.utils.random(minY, maxY);
 
-    console.log(baseTop, targetY, "Base top + target y");
-    console.log('Calculated Scale:', targetY * .001);
-    let dynamicScale = 1;
-    // Increase the scale by .1
     gsap.to(el, {
       x: targetX - baseLeft,
       y: targetY - baseTop,
-      // Needs to fall within the .5-2 range
-      scale: dynamicScale += -targetY * .001,
-      duration: 20,
-      rotationY: Math.floor(targetY * .01),
+      duration: 60,
       ease,
       onComplete: moveToRandom,
     });
@@ -55,17 +51,23 @@ export function float(el, options = {}) {
 
   moveToRandom();
 
-  const spin = gsap.to(el, {
-    rotation,
-    duration: rotationDuration,
-    ease,
-    yoyo: true,
-    repeat: -1,
-    transformOrigin: '50% 50%',
-  });
+  const spin = spinner
+    ? gsap.to(spinner, {
+      rotation,
+      duration: rotationDuration,
+      ease,
+      yoyo: true,
+      repeat: -1,
+    })
+    : null;
 
   return () => {
     gsap.killTweensOf(el);
-    spin.kill();
+    if (spinner) gsap.killTweensOf(spinner);
+    spin?.kill();
   };
+}
+
+export function ripple(el) {
+  // This needs to create extremely transparent waves eminating outwards from the center of lily-plane
 }
