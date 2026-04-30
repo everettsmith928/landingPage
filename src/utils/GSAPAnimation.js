@@ -13,7 +13,7 @@ export function float(el, options = {}) {
   const parent = el.parentElement;
   if (!parent) return () => { };
 
-  const spinner = el.firstElementChild;
+  const spinner = el.querySelector('img') || el.firstElementChild;
 
   gsap.set(el, { xPercent: -50, yPercent: -50, x: 0, y: 0, transformOrigin: '50% 50%' });
   if (spinner) gsap.set(spinner, { transformOrigin: '50% 50%' });
@@ -66,6 +66,57 @@ export function float(el, options = {}) {
     if (spinner) gsap.killTweensOf(spinner);
     spin?.kill();
   };
+}
+
+export function repel(elements, options = {}) {
+  if (!elements?.length) return () => { };
+
+  const {
+    minDistance = 220,
+    strength = 0.4,
+    smoothing = 0.08,
+  } = options;
+
+  const targets = elements.map((el) => el.querySelector('.lily-bump') || el);
+  const state = elements.map(() => ({ x: 0, y: 0, tx: 0, ty: 0 }));
+
+  const center = (el) => ({
+    cx: el.offsetLeft + (Number(gsap.getProperty(el, 'x')) || 0),
+    cy: el.offsetTop + (Number(gsap.getProperty(el, 'y')) || 0),
+  });
+
+  const tick = () => {
+    const positions = elements.map(center);
+
+    for (const s of state) { s.tx = 0; s.ty = 0; }
+
+    for (let i = 0; i < elements.length; i++) {
+      for (let j = i + 1; j < elements.length; j++) {
+        const dx = positions[j].cx - positions[i].cx;
+        const dy = positions[j].cy - positions[i].cy;
+        const dist = Math.hypot(dx, dy) || 0.001;
+
+        if (dist < minDistance) {
+          const overlap = (minDistance - dist) * strength;
+          const nx = dx / dist;
+          const ny = dy / dist;
+          state[i].tx -= nx * overlap;
+          state[i].ty -= ny * overlap;
+          state[j].tx += nx * overlap;
+          state[j].ty += ny * overlap;
+        }
+      }
+    }
+
+    state.forEach((s, i) => {
+      s.x += (s.tx - s.x) * smoothing;
+      s.y += (s.ty - s.y) * smoothing;
+      gsap.set(targets[i], { x: s.x, y: s.y });
+    });
+  };
+
+  gsap.ticker.add(tick);
+  return () => gsap.ticker.remove(tick);
 }
 
 export function ripple(el) {

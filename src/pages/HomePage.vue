@@ -4,13 +4,13 @@
       <div class="ripples ripples-a"></div>
       <div class="ripples ripples-b"></div>
       <div ref="floatingAsset" class="floating-asset">
-        <img :src="lily" alt="" class="lily-img" />
+        <div class="lily-bump"><img :src="lily" alt="" class="lily-img" /></div>
       </div>
       <div ref="floatingAsset2" class="floating-asset-2">
-        <img :src="lily" alt="" class="lily-img" />
+        <div class="lily-bump"><img :src="lily" alt="" class="lily-img" /></div>
       </div>
       <div ref="floatingAsset3" class="floating-asset-3">
-        <img :src="lily" alt="" class="lily-img" />
+        <div class="lily-bump"><img :src="lily" alt="" class="lily-img" /></div>
       </div>
     </div>
     <div class="landing-splash">
@@ -88,7 +88,7 @@
 
 <script setup>
 import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue';
-import { float, ripple } from '../utils/GSAPAnimation.js';
+import { float, ripple, repel } from '../utils/GSAPAnimation.js';
 
 const teleportAuthFlow = new URL('../public/teleport_auth_flow.mp4', import.meta.url).href;
 const teleportLanding = new URL('../public/teleport_landing.mp4', import.meta.url).href;
@@ -141,17 +141,20 @@ const floatingAsset3 = ref(null);
 const lilyPlane = ref(null);
 let stopFloat = null;
 let stopRipple = null;
+let stopRepel = null;
 
 onMounted(() => {
   stopFloat = float(floatingAsset.value);
   float(floatingAsset2.value);
   float(floatingAsset3.value);
   stopRipple = ripple(lilyPlane.value);
+  stopRepel = repel([floatingAsset.value, floatingAsset2.value, floatingAsset3.value]);
 });
 
 onBeforeUnmount(() => {
   stopFloat?.();
   stopRipple?.();
+  stopRepel?.();
 });
 
 const registerActiveVideo = (index, el) => {
@@ -290,6 +293,14 @@ defineExpose({ cycleVideo });
 .floating-asset-3 {
   top: 60%;
   left: 80%;
+}
+
+.lily-bump {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .lily-img {
