@@ -28,8 +28,8 @@
       </div>
       <div class="landing-navigation">
         <div class="option-wrapper">
-          <a href="#portfolio-section" class="navigation-option text-beige">Portfolio</a>
-          <a class="navigation-option text-beige">About</a>
+          <a class="navigation-option text-beige" @click="navigateTo('portfolio')">Portfolio</a>
+          <a class="navigation-option text-beige" @click="navigateTo('about')">About</a>
           <a class="navigation-option text-beige">Resume</a>
           <a class="navigation-option text-beige">Contact</a>
         </div>
@@ -86,16 +86,49 @@
         </div>
       </div>
     </div>
+    <div class="active-card shadow-palm border-palm" v-else>
+      <p class="text-beige">Select a project to view</p>
+    </div>
   </section>
-  <section class="about-section">
-
+  <section id="about-section" class="about-section">
+    <div class="about-header">
+      <div class="portrait-box shadow-palm">
+        <p class="text-beige">Image Here</p>
+        <!-- Oval shaved -->
+      </div>
+      <h3 class="display-title font-large text-beige">Who I am</h3>
+      <p class="font-small text-palm about-definition info">// Marsland <br><br> It signifies someone who lived near
+        marshy
+        land
+        or
+        a
+        meadow close to a
+        marsh. Marsland literally translates to "marsh land." This name would have been adopted by
+        individuals residing near such geographical features, eventually becoming a hereditary surname. </p>
+    </div>
+    <p class="text-beige font-small">Here is some information on who I am and my past/present/current + strengths</p>
   </section>
 
 </template>
 
 <script setup>
-import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue';
-import { float, loadTitle, repel, underwaterFloat } from '../utils/GSAPAnimation.js';
+import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { float, loadTitle, repel, scrollToSection, underwaterFloat } from '../utils/GSAPAnimation.js';
+
+const route = useRoute();
+const router = useRouter();
+
+const sectionMap = {
+  portfolio: 'portfolio-section',
+  about: 'about-section',
+};
+
+const navigateTo = (key) => {
+  if (!sectionMap[key]) return;
+  router.replace({ query: { ...route.query, section: key } });
+  scrollToSection(sectionMap[key]);
+};
 
 const teleportAuthFlow = new URL('../public/teleport_auth_flow.mp4', import.meta.url).href;
 const teleportLanding = new URL('../public/teleport_landing.mp4', import.meta.url).href;
@@ -172,6 +205,16 @@ onMounted(() => {
   stopRepel = repel([floatingAsset.value, floatingAsset2.value, floatingAsset3.value, floatingAsset4.value, floatingAsset5.value]);
   loadTitle([everett.value, marsland.value, smith.value]);
   underwaterFloat(document.querySelectorAll(`.navigation-option`))
+  setActive(projects.value[0]);
+
+  const initial = route.query.section;
+  if (initial && sectionMap[initial]) {
+    nextTick(() => scrollToSection(sectionMap[initial]));
+  }
+});
+
+watch(() => route.query.section, (key) => {
+  if (key && sectionMap[key]) scrollToSection(sectionMap[key]);
 });
 
 onBeforeUnmount(() => {
@@ -453,6 +496,7 @@ defineExpose({ cycleVideo });
 }
 
 .active-card {
+  min-height: 30dvh;
   max-height: 80dvh;
   display: flex;
   width: 80%;
@@ -567,7 +611,34 @@ defineExpose({ cycleVideo });
 }
 
 .about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100dvh;
   background-color: $onyx;
+  gap: 10dvw;
+}
+
+.about-header {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.portrait-box {
+  width: 300px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $carbon-black;
+  border-radius: 40%;
+  margin-bottom: 4rem;
+}
+
+.about-definition {
+  opacity: 60%;
 }
 </style>

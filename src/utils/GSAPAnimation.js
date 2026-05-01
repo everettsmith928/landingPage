@@ -1,4 +1,14 @@
 import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
+
+export function scrollToSection(target, options = {}) {
+  const { duration = 1.2, ease = 'power2.inOut', offsetY = 0 } = options;
+  const el = typeof target === 'string' ? document.getElementById(target) : target;
+  if (!el) return;
+  gsap.to(window, { duration, ease, scrollTo: { y: el, offsetY } });
+}
 
 export function float(el, options = {}) {
   if (!el) return () => { };
