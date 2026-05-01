@@ -46,7 +46,7 @@
 
     </div>
   </section>
-  <section id="portfolio-section" class="portfolio-section">
+  <section id="portfolio-section" class="portfolio-section" ref="activeSection">
     <div class="section-card border-palm" v-for="project in projects" :key="project.title"
       @mouseenter="setFocused(project)" @mouseleave="unsetFocused()" @click="setActive(project)"
       :style="{ zIndex: project.title === focusedProject?.title ? 999 : project.zIndex }" :class="[project.bgClass, {
@@ -58,13 +58,13 @@
           <div v-for="color in project.colors" :key="color" class="color-tile" :style="{ backgroundColor: color }">
           </div>
         </div>
-        <div class="project-header text-beige display-title font-medium bg-carbon border-palm">
+        <div class="project-header text-beige display-title font-medium bg-carbon">
           {{ project.title }}</div>
       </div>
     </div>
 
   </section>
-  <section class="active-portfolio-section" ref="activeSection">
+  <section class="active-portfolio-section">
     <div v-if="activeProject" class="active-card shadow-palm border-palm">
       <div class="active-video">
         <div class="video-stack">
@@ -73,7 +73,7 @@
             :class="{ 'is-active': i === (activeVideoIndex[activeProject.title] ?? 0) }" />
         </div>
       </div>
-      <div class="project-description text-palm bg-carbon">
+      <div class="project-description text-palm bg-onyx">
         <div class="project-titles">
           <h2 class="display-title font-large text-palm">{{ activeProject.title }}</h2>
           <h4 class="display-subtitle font-medium text-beige">{{ activeProject.subtitle }}</h4>
@@ -121,7 +121,8 @@ const projects = ref([
     description: '3D Print Marketplace',
     bgClass: 'bg-onyx',
     zIndex: 0,
-    technologies: ['vue', 'docker', 'node', 'typescript', 'aws']
+    technologies: ['vue', 'docker', 'node', 'typescript', 'aws', 'google'],
+    colors: ['#ff6900', '#f0e7f0', '#9333EA', '#091f2e']
   },
   {
     title: 'Slant 3D API',
@@ -259,7 +260,8 @@ defineExpose({ cycleVideo });
   z-index: 1;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 105%);
   -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 105%);
-  background-image: radial-gradient($palm-leaf-ghost 0%, transparent 50%, transparent 100%)
+  background-image: radial-gradient($palm-leaf-ghost 0%, transparent 50%, transparent 100%);
+  overflow-x: hidden;
 }
 
 .floating-asset,
@@ -409,7 +411,7 @@ defineExpose({ cycleVideo });
 
 .section-card {
   position: relative;
-  min-height: 40dvh;
+  min-height: 10dvh;
   padding: 1rem;
   display: flex;
   justify-content: start;
@@ -427,7 +429,8 @@ defineExpose({ cycleVideo });
 
 .focused-card {
   transition: .6s ease-in-out;
-  box-shadow: 0px 0px 40px $palm-leaf;
+  background-color: $carbon-black;
+  box-shadow: 0px 0px 40px $palm-leaf-ghost;
 }
 
 .active-portfolio-section {
@@ -436,6 +439,7 @@ defineExpose({ cycleVideo });
   padding-bottom: 10dvh;
   padding-top: 5dvh;
   scroll-margin-top: 0;
+  background-color: $onyx;
 }
 
 .active-card {
@@ -477,6 +481,12 @@ defineExpose({ cycleVideo });
   inset: 0;
   display: flex;
   flex-direction: column;
+  opacity: 40%;
+  transition: .3s ease-in-out;
+}
+
+.focused-card .color-tiles {
+  opacity: 100%;
 }
 
 .color-tile {
@@ -513,7 +523,7 @@ defineExpose({ cycleVideo });
 }
 
 .card-video.is-active {
-  opacity: 1;
+  opacity: 70%;
 }
 
 .project-title {
@@ -539,5 +549,6 @@ defineExpose({ cycleVideo });
 
 .about-section {
   min-height: 100dvh;
+  background-color: $onyx;
 }
 </style>
