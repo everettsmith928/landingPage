@@ -25,11 +25,6 @@
         </h2>
         <div class="spacer-palm"></div>
         <h3 class="display-subtitle font-medium text-beige job-title">Fullstack Software Developer</h3>
-        <!-- <p class="name-definition text-palm font-small">// Marsland: The surname Marsland is of English origin and is
-          derived from
-          a geographical location. It signifies someone who lived near marshy land or a meadow close to a marsh. The
-          name is composed of two elements: "mersc," an Old English term for marsh, and "land," referring to an area of
-          land. Thus, Marsland literally translates to "marsh land."</p> -->
       </div>
       <div class="landing-navigation">
         <div class="option-wrapper">
@@ -41,11 +36,11 @@
       </div>
     </div>
   </section>
-  <section class="introduction-section bg-onyx">
+  <!-- <section class="introduction-section bg-onyx">
     <div class="bio-info">
 
     </div>
-  </section>
+  </section> -->
   <section id="portfolio-section" class="portfolio-section" ref="activeSection">
     <div class="section-card border-palm" v-for="project in projects" :key="project.title"
       @mouseenter="setFocused(project)" @mouseleave="unsetFocused()" @click="setActive(project)"
@@ -58,7 +53,7 @@
           <div v-for="color in project.colors" :key="color" class="color-tile" :style="{ backgroundColor: color }">
           </div>
         </div>
-        <div class="project-header text-beige display-title font-medium bg-carbon">
+        <div class="project-header text-beige display-title font-small">
           {{ project.title }}</div>
       </div>
     </div>
@@ -75,13 +70,13 @@
       </div>
       <div class="project-description text-palm bg-onyx">
         <div class="project-titles">
-          <h2 class="display-title font-large text-palm">{{ activeProject.title }}</h2>
-          <h4 class="display-subtitle font-medium text-beige">{{ activeProject.subtitle }}</h4>
+          <h2 class="display-title font-medium text-beige">{{ activeProject.title }}</h2>
+          <h4 class="display-subtitle font-small text-palm">{{ activeProject.subtitle }}</h4>
         </div>
         <div class="project-badges">
           <TechBadge v-for="tech in activeProject.technologies" :key="tech" :slug="tech" />
         </div>
-        <div class="project-body text-small text-beige">
+        <div class="project-body font-small text-beige">
           {{ activeProject.description }}
         </div>
         <div class="text-center">
@@ -102,6 +97,8 @@ import { float, loadTitle, repel, underwaterFloat } from '../utils/GSAPAnimation
 
 const teleportAuthFlow = new URL('../public/teleport_auth_flow.mp4', import.meta.url).href;
 const teleportLanding = new URL('../public/teleport_landing.mp4', import.meta.url).href;
+const slant3dAPIVideo = new URL('../public/slant_3d_api_video.mp4', import.meta.url).href;
+const portalsVideo = new URL('../public/portals_walkthrough.mp4', import.meta.url).href;
 const lily = new URL('../public/lily1.png', import.meta.url).href;
 
 const mainLoading = ref(false);
@@ -118,18 +115,23 @@ const projects = ref([
   },
   {
     title: 'Portals',
-    description: '3D Print Marketplace',
+    subtitle: 'CustomizableNo Fee 3D Print Listings',
+    description: 'Feeless 3D print on demand marketplace. Sellers upload a file and it is available to sell within seconds. Using the Slant 3D API with Stripe checkout sessions to process orders. Customizable storefronts with CSS wrappers that dynamically chang the Portals experience chosen by the seller. Slant 3D prints and ships the part, and the seller gets paid out any profit.',
     bgClass: 'bg-onyx',
     zIndex: 0,
+    videos: [portalsVideo],
     technologies: ['vue', 'docker', 'node', 'typescript', 'aws', 'google'],
-    colors: ['#ff6900', '#f0e7f0', '#9333EA', '#091f2e']
+    colors: ['#C27AFF', '#fb923c', '#709FEB', '#091f2e']
   },
   {
     title: 'Slant 3D API',
-    description: 'Rest API',
+    subtitle: 'Where Bits Turn Into Atoms',
+    description: 'Rest API with OpenAPI spec for agentic API usage. Powering Portals, Teleport, and other applications. Multiple API key support, usage limits, request balancing. Wraps Slant 3D microservice architecture including Kraken, an order management and tracking system, file manager system, slicer for STL files and payment microservice.',
     bgClass: 'bg-onyx',
     zIndex: 0,
-    technologies: ['vue', 'docker', 'node', 'typescript', 'aws']
+    videos: [slant3dAPIVideo],
+    technologies: ['vue', 'docker', 'node', 'typescript', 'aws', 'sql'],
+    colors: ['#F8FAFB', '#FE654F', '#FDB833', '#1789FC', '#223843']
   },
   {
     title: 'Kraken',
@@ -418,6 +420,7 @@ defineExpose({ cycleVideo });
   align-items: start;
   transition: transform .6s ease-in-out, width .6s ease-in-out;
   will-change: transform;
+  background-color: $carbon-black;
   cursor: pointer;
   overflow: hidden;
   flex-grow: 1;
@@ -459,6 +462,7 @@ defineExpose({ cycleVideo });
 .project-titles {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   align-items: center;
 }
 
@@ -481,7 +485,7 @@ defineExpose({ cycleVideo });
   inset: 0;
   display: flex;
   flex-direction: column;
-  opacity: 40%;
+  opacity: 0%;
   transition: .3s ease-in-out;
 }
 
@@ -502,8 +506,10 @@ defineExpose({ cycleVideo });
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: .5rem 1.25rem;
+  padding: 2rem 2rem;
   z-index: 1;
+  text-shadow: $carbon-black 10px 5px 10px;
+  background-color: $carbon-black;
 }
 
 .video-stack {
