@@ -45,7 +45,7 @@
     <div class="section-card border-palm" v-for="project in projects" :key="project.title"
       @mouseenter="setFocused(project)" @mouseleave="unsetFocused()" @click="setActive(project)"
       :style="{ zIndex: project.title === focusedProject?.title ? 999 : project.zIndex }" :class="[project.bgClass, {
-        'focused-card': project.title === focusedProject?.title,
+        'focused-card': project.title === focusedProject?.title || project.title === activeProject?.title,
         'minimized-card': project.title !== focusedProject?.title
       }]">
       <div class="project-card">
@@ -57,15 +57,17 @@
           {{ project.title }}</div>
       </div>
     </div>
-
   </section>
   <section class="active-portfolio-section">
     <div v-if="activeProject" class="active-card shadow-palm border-palm">
       <div class="active-video">
-        <div class="video-stack">
+        <div class="video-stack" v-if="activeProject.videos">
           <video v-for="(src, i) in activeProject.videos" :key="src" :ref="(el) => registerActiveVideo(i, el)"
             :src="src" muted loop playsinline preload="metadata" class="card-video"
             :class="{ 'is-active': i === (activeVideoIndex[activeProject.title] ?? 0) }" />
+        </div>
+        <div class="video-stack" v-else>
+          <p class="text-palm font-small">No video available</p>
         </div>
       </div>
       <div class="project-description text-palm bg-onyx">
@@ -80,7 +82,7 @@
           {{ activeProject.description }}
         </div>
         <div class="text-center">
-          <a class="project-link text-center" href="https://teleportpod.com">Visit Site</a>
+          <a class="project-link text-center" :href="activeProject.url" target="_blank">Visit Site</a>
         </div>
       </div>
     </div>
@@ -97,7 +99,7 @@ import { float, loadTitle, repel, underwaterFloat } from '../utils/GSAPAnimation
 
 const teleportAuthFlow = new URL('../public/teleport_auth_flow.mp4', import.meta.url).href;
 const teleportLanding = new URL('../public/teleport_landing.mp4', import.meta.url).href;
-const slant3dAPIVideo = new URL('../public/slant_3d_api_video.mp4', import.meta.url).href;
+const slant3dAPIVideo = new URL('../public/api_walkthrough.mp4', import.meta.url).href;
 const portalsVideo = new URL('../public/portals_walkthrough.mp4', import.meta.url).href;
 const lily = new URL('../public/lily1.png', import.meta.url).href;
 
@@ -110,32 +112,36 @@ const projects = ref([
     bgClass: 'bg-onyx',
     zIndex: 0,
     videos: [teleportAuthFlow, teleportLanding],
+    url: 'https://teleportpod.com',
     technologies: ['vue', 'docker', 'node', 'typescript', 'aws', 'google'],
     colors: ['#EEF6FC', '#CBE3F6', '#4D9DE0', '#224a69'] // White, Light Blue, Blue Primary, Dark Blue
   },
   {
     title: 'Portals',
-    subtitle: 'CustomizableNo Fee 3D Print Listings',
+    subtitle: 'No Fee 3D Print Listing Marketplace',
     description: 'Feeless 3D print on demand marketplace. Sellers upload a file and it is available to sell within seconds. Using the Slant 3D API with Stripe checkout sessions to process orders. Customizable storefronts with CSS wrappers that dynamically chang the Portals experience chosen by the seller. Slant 3D prints and ships the part, and the seller gets paid out any profit.',
     bgClass: 'bg-onyx',
     zIndex: 0,
     videos: [portalsVideo],
+    url: 'https://teleportpod.com/portals/explore',
     technologies: ['vue', 'docker', 'node', 'typescript', 'aws', 'google'],
     colors: ['#C27AFF', '#fb923c', '#709FEB', '#091f2e']
   },
   {
     title: 'Slant 3D API',
     subtitle: 'Where Bits Turn Into Atoms',
-    description: 'Rest API with OpenAPI spec for agentic API usage. Powering Portals, Teleport, and other applications. Multiple API key support, usage limits, request balancing. Wraps Slant 3D microservice architecture including Kraken, an order management and tracking system, file manager system, slicer for STL files and payment microservice.',
+    description: '3D Printing API powered by a real print farm. Direct order and file management integrations. Powering Portals, Teleport, and other applications. Multiple API key support, usage limits, payment integrations. Entrance to  Slant 3D microservice architecture including Kraken, an order management and tracking system, file manager system, slicer for STL files and payment microservice.',
     bgClass: 'bg-onyx',
     zIndex: 0,
     videos: [slant3dAPIVideo],
-    technologies: ['vue', 'docker', 'node', 'typescript', 'aws', 'sql'],
+    url: 'https://slant3dapi.com',
+    technologies: ['vue', 'docker', 'node', 'typescript', 'aws', 'google', 'postgres'],
     colors: ['#F8FAFB', '#FE654F', '#FDB833', '#1789FC', '#223843']
   },
   {
     title: 'Kraken',
-    description: 'Proprietary Farm Operations Software',
+    subtitle: 'Print Farm Management Software',
+    description: 'Scalable print farm management software. Proprietary node based system managing thousands of print jobs, files, warehousing, and filaments automatically. Converting STL to GCODE via an automated slicer and queue system.',
     bgClass: 'bg-onyx',
     zIndex: 0,
     technologies: ['vue', 'docker', 'node', 'typescript', 'aws']
@@ -421,6 +427,7 @@ defineExpose({ cycleVideo });
   transition: transform .6s ease-in-out, width .6s ease-in-out;
   will-change: transform;
   background-color: $carbon-black;
+  background-image: linear-gradient(to bottom, $carbon-black 10%, $onyx 100%);
   cursor: pointer;
   overflow: hidden;
   flex-grow: 1;
@@ -472,7 +479,7 @@ defineExpose({ cycleVideo });
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .project-card {
@@ -485,7 +492,7 @@ defineExpose({ cycleVideo });
   inset: 0;
   display: flex;
   flex-direction: column;
-  opacity: 0%;
+  opacity: 10%;
   transition: .3s ease-in-out;
 }
 
@@ -506,14 +513,20 @@ defineExpose({ cycleVideo });
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 2rem 2rem;
   z-index: 1;
   text-shadow: $carbon-black 10px 5px 10px;
-  background-color: $carbon-black;
+  transition: .3s ease-in-out;
+}
+
+.focused-card .project-header {
+  opacity: 0;
 }
 
 .video-stack {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   inset: 0;
   z-index: 0;
 }
