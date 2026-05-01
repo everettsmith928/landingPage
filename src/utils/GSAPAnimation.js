@@ -1,7 +1,123 @@
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
+
+function applyFloatMask(el, fadeBand) {
+  const mask = `linear-gradient(to bottom, black var(--floatup-reveal), transparent calc(var(--floatup-reveal) + ${fadeBand}%))`;
+  el.style.maskImage = mask;
+  el.style.webkitMaskImage = mask;
+}
+
+function clearFloatMask(el) {
+  el.style.maskImage = '';
+  el.style.webkitMaskImage = '';
+  el.style.removeProperty('--floatup-reveal');
+}
+
+export function floatUp(el, options = {}) {
+  if (!el) return;
+
+  const {
+    duration = 1,
+    distance = 400,
+    ease = 'power2.out',
+    fadeBand = 400,
+    delayMax = 0.1,
+    onComplete,
+  } = options;
+
+  gsap.killTweensOf(el);
+  applyFloatMask(el, fadeBand);
+
+  return gsap.fromTo(el,
+    { opacity: 0, y: distance, '--floatup-reveal': `-${fadeBand}%` },
+    {
+      opacity: 1,
+      y: 0,
+      '--floatup-reveal': `${100 + fadeBand}%`,
+      duration,
+      ease,
+      delay: gsap.utils.random(0, delayMax),
+      onComplete: () => {
+        clearFloatMask(el);
+        onComplete?.();
+      },
+    }
+  );
+}
+
+export function floatDown(el, options = {}) {
+  if (!el) return;
+
+  const {
+    duration = 1,
+    distance = 400,
+    ease = 'power2.in',
+    fadeBand = 400,
+    delayMax = 0.3,
+    onComplete,
+  } = options;
+
+  gsap.killTweensOf(el);
+  applyFloatMask(el, fadeBand);
+
+  return gsap.fromTo(el,
+    { opacity: 1, y: 0, '--floatup-reveal': `${100 + fadeBand}%` },
+    {
+      opacity: 0,
+      y: distance,
+      '--floatup-reveal': `-${fadeBand}%`,
+      duration,
+      ease,
+      delay: gsap.utils.random(0, delayMax),
+      onComplete: () => {
+        clearFloatMask(el);
+        onComplete?.();
+      },
+    }
+  );
+}
+
+export function floatUpOnScroll(el, options = {}) {
+  if (!el) return () => { };
+  const {
+    start = 'top 85%',
+    end = 'center top',
+    once = false,
+    reverse = true,
+    ...floatOptions
+  } = options;
+
+  const fadeBand = floatOptions.fadeBand ?? 400;
+  const distance = floatOptions.distance ?? 400;
+
+  if (options.prehide !== false) {
+    applyFloatMask(el, fadeBand);
+    gsap.set(el, {
+      opacity: 0,
+      y: distance,
+      '--floatup-reveal': `-${fadeBand}%`,
+    });
+  }
+
+  const up = () => floatUp(el, floatOptions);
+  const down = () => floatDown(el, floatOptions);
+
+  const trigger = ScrollTrigger.create({
+    trigger: el,
+    start,
+    end,
+    once,
+    onEnter: up,
+    onLeave: reverse ? down : undefined,
+    onEnterBack: reverse ? up : undefined,
+    onLeaveBack: reverse ? down : undefined,
+  });
+
+  return () => trigger.kill();
+}
 
 export function scrollToSection(target, options = {}) {
   const { duration = 1.2, ease = 'power2.inOut', offsetY = 0 } = options;

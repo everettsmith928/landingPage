@@ -41,48 +41,56 @@
 
     </div>
   </section> -->
-  <section id="portfolio-section" class="portfolio-section" ref="activeSection">
-    <div class="section-card border-palm" v-for="project in projects" :key="project.title"
-      @mouseenter="setFocused(project)" @mouseleave="unsetFocused()" @click="setActive(project)"
-      :style="{ zIndex: project.title === focusedProject?.title ? 999 : project.zIndex }" :class="[project.bgClass, {
-        'focused-card': project.title === focusedProject?.title || project.title === activeProject?.title,
-        'minimized-card': project.title !== focusedProject?.title
-      }]">
-      <div class="project-card">
-        <div class="color-tiles">
-          <div v-for="color in project.colors" :key="color" class="color-tile" :style="{ backgroundColor: color }">
+  <section class="portfolio-section" ref="activeSection">
+    <div class="portfolio-header" id="portfolio-section">
+      <h3 class="display-title font-large text-beige">Portfolio</h3>
+    </div>
+    <div class="section-cards">
+      <div class="section-card border-palm" v-for="project in projects" :key="project.title"
+        @mouseenter="setFocused(project)" @mouseleave="unsetFocused()" @click="setActive(project)"
+        :style="{ zIndex: project.title === focusedProject?.title ? 999 : project.zIndex }" :class="[project.bgClass, {
+          'focused-card': project.title === focusedProject?.title || project.title === activeProject?.title,
+          'minimized-card': project.title !== focusedProject?.title
+        }]">
+        <div class="project-card">
+          <div class="color-tiles">
+            <div v-for="color in project.colors" :key="color" class="color-tile" :style="{ backgroundColor: color }">
+            </div>
           </div>
+          <div class="project-header text-beige display-title font-small">
+            {{ project.title }}</div>
         </div>
-        <div class="project-header text-beige display-title font-small">
-          {{ project.title }}</div>
       </div>
     </div>
+
   </section>
   <section class="active-portfolio-section">
-    <div v-if="activeProject" class="active-card shadow-palm border-palm">
-      <div class="active-video">
-        <div class="video-stack" v-if="activeProject.videos">
-          <video v-for="(src, i) in activeProject.videos" :key="src" :ref="(el) => registerActiveVideo(i, el)"
-            :src="src" muted loop playsinline preload="metadata" class="card-video"
-            :class="{ 'is-active': i === (activeVideoIndex[activeProject.title] ?? 0) }" />
+    <div v-if="activeProject" class="active-card-shadow">
+      <div ref="activeCardEl" class="active-card border-palm shadow-palm">
+        <div class="active-video">
+          <div class="video-stack" v-if="activeProject.videos">
+            <video v-for="(src, i) in activeProject.videos" :key="src" :ref="(el) => registerActiveVideo(i, el)"
+              :src="src" muted loop playsinline preload="metadata" class="card-video"
+              :class="{ 'is-active': i === (activeVideoIndex[activeProject.title] ?? 0) }" />
+          </div>
+          <div class="video-stack" v-else>
+            <p class="text-palm font-small">No video available</p>
+          </div>
         </div>
-        <div class="video-stack" v-else>
-          <p class="text-palm font-small">No video available</p>
-        </div>
-      </div>
-      <div class="project-description text-palm bg-onyx">
-        <div class="project-titles">
-          <h2 class="display-title font-medium text-beige">{{ activeProject.title }}</h2>
-          <h4 class="display-subtitle font-small text-palm">{{ activeProject.subtitle }}</h4>
-        </div>
-        <div class="project-badges">
-          <TechBadge v-for="tech in activeProject.technologies" :key="tech" :slug="tech" />
-        </div>
-        <div class="project-body font-small text-beige">
-          {{ activeProject.description }}
-        </div>
-        <div class="text-center">
-          <a class="project-link text-center" :href="activeProject.url" target="_blank">Visit Site</a>
+        <div class="project-description text-palm bg-onyx">
+          <div class="project-titles">
+            <h2 class="display-title font-medium text-beige">{{ activeProject.title }}</h2>
+            <h4 class="display-subtitle font-small text-palm">{{ activeProject.subtitle }}</h4>
+          </div>
+          <div class="project-badges">
+            <TechBadge v-for="tech in activeProject.technologies" :key="tech" :slug="tech" />
+          </div>
+          <div class="project-body font-small text-beige">
+            {{ activeProject.description }}
+          </div>
+          <div class="text-center">
+            <a class="project-link text-center" :href="activeProject.url" target="_blank">Visit Site</a>
+          </div>
         </div>
       </div>
     </div>
@@ -92,21 +100,26 @@
   </section>
   <section id="about-section" class="about-section">
     <div class="about-header">
-      <div class="portrait-box shadow-palm">
-        <p class="text-beige">Image Here</p>
-        <!-- Oval shaved -->
+      <div class="portrait-box">
+        <div class="portrait  shadow-palm">
+          <p class="text-beige">Image Here</p>
+        </div>
+
+        <!-- Oval shaped -->
       </div>
       <h3 class="display-title font-large text-beige">Who I am</h3>
       <p class="font-small text-palm about-definition info">// Marsland <br><br> It signifies someone who lived near
-        marshy
-        land
-        or
-        a
-        meadow close to a
-        marsh. Marsland literally translates to "marsh land." This name would have been adopted by
+        marshy land or a meadow close to a marsh. Marsland literally translates to "marsh land." This name would have
+        been adopted by
         individuals residing near such geographical features, eventually becoming a hereditary surname. </p>
     </div>
-    <p class="text-beige font-small">Here is some information on who I am and my past/present/current + strengths</p>
+    <div class="about-bio">
+      <p class="text-beige font-small">Here is some information on who I am and my past/present/current + strengthsHere
+        is some information on who I am and my past/present/current + strengthsHere is some information on who I am and
+        my past/present/current + strengthsHere is some information on who I am and my past/present/current + strengths
+        Here is some information on who I am and my past/present/current + strengthsHere is some information on who I am
+        and my past/present/current + strengths</p>
+    </div>
   </section>
 
 </template>
@@ -114,7 +127,7 @@
 <script setup>
 import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { float, loadTitle, repel, scrollToSection, underwaterFloat } from '../utils/GSAPAnimation.js';
+import { float, floatDown, floatUp, floatUpOnScroll, loadTitle, repel, scrollToSection, underwaterFloat } from '../utils/GSAPAnimation.js';
 
 const route = useRoute();
 const router = useRouter();
@@ -195,8 +208,10 @@ const floatingAsset3 = ref(null);
 const floatingAsset4 = ref(null);
 const floatingAsset5 = ref(null);
 const lilyPlane = ref(null);
+const activeCardEl = ref(null);
 let stopFloat = null;
 let stopRepel = null;
+const stopScrollTriggers = [];
 
 onMounted(() => {
   stopFloat = float(floatingAsset.value);
@@ -205,7 +220,16 @@ onMounted(() => {
   stopRepel = repel([floatingAsset.value, floatingAsset2.value, floatingAsset3.value, floatingAsset4.value, floatingAsset5.value]);
   loadTitle([everett.value, marsland.value, smith.value]);
   underwaterFloat(document.querySelectorAll(`.navigation-option`))
-  setActive(projects.value[0]);
+  setActive(projects.value[0], { scroll: false });
+
+  nextTick(() => {
+    document.querySelectorAll('.portfolio-section .section-card').forEach((card) => {
+      stopScrollTriggers.push(floatUpOnScroll(card));
+    });
+    if (activeCardEl.value) {
+      stopScrollTriggers.push(floatUpOnScroll(activeCardEl.value, { prehide: false }));
+    }
+  });
 
   const initial = route.query.section;
   if (initial && sectionMap[initial]) {
@@ -220,6 +244,7 @@ watch(() => route.query.section, (key) => {
 onBeforeUnmount(() => {
   stopFloat?.();
   stopRepel?.();
+  stopScrollTriggers.forEach((stop) => stop?.());
 });
 
 const registerActiveVideo = (index, el) => {
@@ -254,14 +279,23 @@ const stopAllVideos = (title) => {
   });
 };
 
-const setActive = (project) => {
-  stopActiveSectionVideos();
-  activeVideoRefs.value = [];
-  activeProject.value = project;
-  nextTick(() => {
-    activeSection.value?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    if (project.videos?.length) playActiveSectionVideo();
-  });
+const setActive = (project, { scroll = true } = {}) => {
+  const swap = () => {
+    stopActiveSectionVideos();
+    activeVideoRefs.value = [];
+    activeProject.value = project;
+    nextTick(() => {
+      if (activeCardEl.value) floatUp(activeCardEl.value);
+      if (project.videos?.length) playActiveSectionVideo();
+    });
+  };
+
+  const isSwap = activeProject.value && activeProject.value.title !== project.title;
+  if (isSwap && activeCardEl.value) {
+    floatDown(activeCardEl.value, { onComplete: swap });
+  } else {
+    swap();
+  }
 };
 
 const setFocused = (project) => {
@@ -450,14 +484,25 @@ defineExpose({ cycleVideo });
 .portfolio-section {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  min-height: 20dvh;
+  flex-direction: column;
   padding-left: 10dvw;
   padding-right: 10dvw;
   background-color: $onyx;
-  padding-top: 10dvh;
+  padding-top: 40dvh;
   perspective: 3000px;
   perspective-origin: center;
+}
+
+.portfolio-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.section-cards {
+  display: flex;
+  min-height: 20dvh;
+  gap: 1rem;
 }
 
 .section-card {
@@ -467,13 +512,13 @@ defineExpose({ cycleVideo });
   display: flex;
   justify-content: start;
   align-items: start;
-  transition: transform .6s ease-in-out, width .6s ease-in-out;
   will-change: transform;
   background-color: $carbon-black;
   background-image: linear-gradient(to bottom, $carbon-black 10%, $onyx 100%);
   cursor: pointer;
   overflow: hidden;
   flex-grow: 1;
+  opacity: 0;
 }
 
 .section-card:hover {
@@ -495,12 +540,19 @@ defineExpose({ cycleVideo });
   background-color: $onyx;
 }
 
-.active-card {
+.active-card-shadow {
+  width: 80%;
+  display: flex;
   min-height: 30dvh;
   max-height: 80dvh;
+}
+
+.active-card {
+  flex: 1;
   display: flex;
-  width: 80%;
   align-items: stretch;
+  min-height: 0;
+  opacity: 0;
 }
 
 .active-video {
@@ -586,7 +638,7 @@ defineExpose({ cycleVideo });
 }
 
 .card-video.is-active {
-  opacity: 70%;
+  opacity: 85%;
 }
 
 .project-title {
@@ -617,28 +669,46 @@ defineExpose({ cycleVideo });
   min-height: 100dvh;
   background-color: $onyx;
   gap: 10dvw;
+  padding-bottom: 40dvh;
+  padding-top: 10dvh;
+  margin-top: 30dvh;
 }
 
 .about-header {
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 }
 
 
 .portrait-box {
-  width: 300px;
+  width: 100%;
   height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $carbon-black;
-  border-radius: 40%;
   margin-bottom: 4rem;
+}
+
+.portrait {
+  width: 300px;
+  height: 500px;
+  border-radius: 40%;
+  border: 8px solid $palm-leaf-ghost;
+  background-color: $carbon-black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .about-definition {
   opacity: 60%;
+}
+
+.about-bio {
+  max-width: 500px;
+  display: flex;
+  align-items: start;
 }
 </style>
